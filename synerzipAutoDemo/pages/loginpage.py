@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 class LoginPage():
@@ -89,12 +91,16 @@ class LoginPage():
         self.setUserName(username)
         self.setPassword(password)
         self.clickOnLoginBtn()
+        time.sleep(10)
 
     def do_login_with_invalid_credentials(self,invalidusername,invalidpassword):
         self.do_click_on_welcome_tab()
+        time.sleep(10)
         self.do_click_on_logout_tab()
+        time.sleep(10)
         self.setUserName(invalidusername)
         self.setPassword(invalidpassword)
         self.clickOnLoginBtn()
+        time.sleep(10)
 
 

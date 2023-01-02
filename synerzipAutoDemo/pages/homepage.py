@@ -12,13 +12,18 @@ class HomePage:
     Todays_Birthday_Xpath="//fieldset[@id='panel-birthday']//div//strong"
     Leave_Balance_Xpath="(//table[@style='width:100%']//tr//td)[2]"
     Homepage_logo_Xpath="//*[contains(@src,'cropped-synerzip-logo-with-Inc5000.png')]"
+    Homepage_Hiring_Xpath="//*[contains(@src, 'hiring_icon.png')]"
 
     def __init__(self,driver):
         self.driver=driver
 
-    def verify_logo_with_INC5000(self):
+    def verify_logo_with_INC5000_on_homepage(self):
         HomepageLogo_element = self.driver.find_element(By.XPATH, self.Homepage_logo_Xpath)
         return bool(HomepageLogo_element)
+
+    def verify_hiring_logo_on_homepage(self):
+        HomepageHiringLogo_element = self.driver.find_element(By.XPATH, self.Homepage_Hiring_Xpath)
+        return bool(HomepageHiringLogo_element)
 
     def is_hometab_exists(self):
         hometab_element=self.driver.find_element(By.XPATH, self.HomeTab_Xpath)
@@ -30,7 +35,7 @@ class HomePage:
 
     def get_CurrentDate(self):
         current_dt = datetime.datetime.now()
-        return current_dt.strftime("%d-%m-%Y")
+        print(current_dt.strftime("%d-%m-%Y"))
 
     def verify_background_color_of_current_date(self):
         bc_color=self.driver.find_element(By.XPATH, self.current_dt_Xpath).value_of_css_property("background-color")
@@ -59,6 +64,7 @@ class HomePage:
     def verify_paid_leave_balance(self):
         leave_bal=self.driver.find_element(By.XPATH, self.Leave_Balance_Xpath)
         return leave_bal.text
+
 
 
 
